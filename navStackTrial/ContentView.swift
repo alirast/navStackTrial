@@ -26,27 +26,10 @@ struct ContentView: View {
           .navigationDestination(for: NavigationType.self) { screen in
             switch screen {
             case .characters:
-              VStack {
-                Text("people view")
-                
-                Button {
-                  mainStack.append(.location)
-                } label: {
-                  Text("go to location")
-                }
-
-              }
+              CharactersScreen(mainStack: $mainStack)
               
             case .location:
-              VStack {
-                Text("Location view")
-                
-                Button {
-                  mainStack.removeAll()
-                } label: {
-                  Text("go to root")
-                }
-              }
+              LocationScreen(mainStack: $mainStack)
             }
           }
       }
