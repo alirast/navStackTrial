@@ -19,16 +19,8 @@ struct ContentView: View {
     var body: some View {
       NavigationStack(path: $mainStack) {
         
-        VStack {
-          Text("Episodes screen")
-          Button {
-            mainStack.append(.characters)
-          } label: {
-            Text("go to characters")
-          }
-
-        }
-          .navigationTitle("Episodes screen")
+        EpisodesScreen(mainStack: $mainStack)
+          .navigationTitle("Episodes aka home screen")
           .navigationBarTitleDisplayMode(.inline)
 
           .navigationDestination(for: NavigationType.self) { screen in
@@ -36,6 +28,7 @@ struct ContentView: View {
             case .characters:
               VStack {
                 Text("people view")
+                
                 Button {
                   mainStack.append(.location)
                 } label: {
@@ -47,6 +40,7 @@ struct ContentView: View {
             case .location:
               VStack {
                 Text("Location view")
+                
                 Button {
                   mainStack.removeAll()
                 } label: {
